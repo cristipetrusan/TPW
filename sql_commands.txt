@@ -1,0 +1,150 @@
+conn STUDENT/STUDENT
+
+CREATE TABLE val_procentuale (
+  parola VARCHAR2(255), 
+  impozit_p NUMBER(5,2) NOT NULL,
+  cas_p NUMBER(5,2) NOT NULL,
+  cass_p NUMBER(5,2) NOT NULL
+);
+
+CREATE TABLE val_procentuale (
+  parola INT,
+  impozit_p NUMBER(5,2) NOT NULL,
+  cas_p NUMBER(5,2) NOT NULL,
+  cass_p NUMBER(5,2) NOT NULL
+);
+
+ALTER TABLE val_procentuale
+ADD CONSTRAINT pk_val_procentuale PRIMARY KEY (ID);
+
+
+CREATE TABLE salar (
+    nr_crt INT NOT NULL,
+    nume VARCHAR2(15) NOT NULL,
+    prenume VARCHAR2(20) NOT NULL,
+    functie VARCHAR2(20) NOT NULL,
+    salar_baza INT NOT NULL,
+    spor INT NOT NULL,
+    premii_brute INT,
+    total_brut INT,
+    brut_impoz INT,
+    impozit INT,
+    cas INT,
+    cass INT,
+    retineri INT,
+    virat_card INT
+);
+
+
+ALTER TABLE salar ADD (
+    CONSTRAINT salar_nr PRIMARY KEY (nr_crt)
+);
+
+CREATE SEQUENCE seq_salar START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER salar_tri_inc
+BEFORE INSERT ON salar
+FOR EACH ROW
+BEGIN
+    SELECT seq_salar.NEXTVAL INTO :new.nr_crt FROM dual;
+END;
+/
+
+DROP TABLE VAL_PROCENTUALE;
+
+CREATE TABLE val_procentuale (
+  id INT,
+  parola VARCHAR(255),
+  impozit_p NUMBER(5,2) NOT NULL,
+  cas_p NUMBER(5,2) NOT NULL,
+  cass_p NUMBER(5,2) NOT NULL
+);
+
+
+ALTER TABLE val_procentuale ADD (
+    CONSTRAINT id PRIMARY KEY (id)
+);
+
+INSERT INTO val_procentuale (parola, impozit_p, cas_p, cass_p) VALUES ("1234",0.1, 0.25, 0.1);
+
+INSERT INTO salar (
+    nr_crt,
+    nume,
+    prenume,
+    functie,
+    salar_baza,
+    spor,
+    premii_brute,
+    total_brut,
+    brut_impoz,
+    impozit,
+    cas,
+    cass,
+    retineri,
+    virat_card
+) VALUES (
+    1,
+    'Popescu',
+    'Ion',
+    'Inginer',
+    4000,
+    10,
+    0,
+    4400,
+    2860,
+    286,
+    1100,
+    440,
+    0,
+    2574
+);
+
+
+SET LINESIZE 200
+
+CREATE OR REPLACE TRIGGER calculate_values_trigger
+BEFORE INSERT OR UPDATE ON salar
+FOR EACH ROW
+DECLARE
+  v_total_brut        NUMBER(38);
+  v_cas_percent      NUMBER(38);
+  v_cass_percent     NUMBER(38);
+  v_impozit_percent  NUMBER(38);	
+BEGIN
+  -- Replace null or empty values with 0
+  :NEW.PREMII_BRUTE := NVL(NULLIF(TRIM(:NEW.PREMII_BRUTE), ''), 0);
+  :NEW.RETINERI := NVL(NULLIF(TRIM(:NEW.RETINERI), ''), 0);
+
+  -- Fetch percentage values from val_procentuale table
+  SELECT CAS_P, CASS_P, IMPOZIT_P
+  INTO v_cas_percent, v_cass_percent, v_impozit_percent
+  FROM val_procentuale
+  WHERE ROWNUM = 1; -- Assuming there is only one row in val_procentuale
+
+  -- Calculate what the employee receives
+  :NEW.TOTAL_BRUT := :NEW.SALAR_BAZA * (1 + :NEW.SPOR / 100) + :NEW.PREMII_BRUTE;
+  DBMS_OUTPUT.PUT_LINE('Total Brut: ' || :NEW.TOTAL_BRUT);
+
+  -- Calculate contributions to CAS, CASS, and IMPOZIT
+  :NEW.CAS := v_cas_percent * :NEW.TOTAL_BRUT;
+  DBMS_OUTPUT.PUT_LINE('CAS: ' || :NEW.CAS);
+  
+  :NEW.CASS := v_cass_percent * :NEW.TOTAL_BRUT;
+  DBMS_OUTPUT.PUT_LINE('CASS: ' || :NEW.CASS);
+
+  :NEW.BRUT_IMPOZ := :NEW.TOTAL_BRUT - :NEW.CAS - :NEW.CASS;
+  DBMS_OUTPUT.PUT_LINE('Brut Impozabil: ' || :NEW.BRUT_IMPOZ);
+
+  :NEW.IMPOZIT := v_impozit_percent * :NEW.BRUT_IMPOZ;
+  DBMS_OUTPUT.PUT_LINE('Impozit: ' || :NEW.IMPOZIT);
+
+  -- Calculate what the employee takes home
+  :NEW.VIRAT_CARD := :NEW.TOTAL_BRUT - :NEW.IMPOZIT - :NEW.CAS - :NEW.CASS - :NEW.RETINERI;
+  DBMS_OUTPUT.PUT_LINE('Virat Card: ' || :NEW.VIRAT_CARD);
+END;
+/
+
+
+
+INSERT INTO salar (NUME, PRENUME, FUNCTIE, SALAR_BAZA, SPOR) VALUES ('Petrusan', 'Cristi', 'engineer', 15000, 10);
+SELECT * FROM salar;
