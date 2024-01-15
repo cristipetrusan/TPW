@@ -19,7 +19,10 @@ namespace WebApplication1
 
             // Create the connection
             connection = new OracleConnection(connectionString);
-
+            if (User.Identity.IsAuthenticated == false)
+            {
+                Server.Transfer("Account/Login.aspx");
+            }
         }
 
         protected void ButtonCauta_Click(object sender, EventArgs e)
@@ -40,12 +43,12 @@ namespace WebApplication1
                     // If a record is found, enable the buttonSterge
                     if (count > 0)
                     {
-                        ButtonSterge.Enabled = true;
+                        //ButtonSterge.Enabled = true;
                     }
                     else
                     {
                         Label3.Text = "Angajatul nu a fost gasit!";
-                        ButtonSterge.Enabled = false;
+                        //ButtonSterge.Enabled = false;
                     }
                 }
                 catch (Exception ex)
@@ -62,5 +65,11 @@ namespace WebApplication1
         {
 
         }
+
+        protected void GridView1_OnRowDeleted(object sender, EventArgs e)
+        {
+            Label3.Text = "Angajatul a fost sters cu succes!";
+        }
+
     }
 }

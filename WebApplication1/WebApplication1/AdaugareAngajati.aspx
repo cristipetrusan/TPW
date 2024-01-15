@@ -7,15 +7,18 @@
             <br />
             NUME:
             <asp:TextBox ID="NUMETextBox" runat="server" Text='<%# Bind("NUME") %>' />
+            
             <br />
             PRENUME:
             <asp:TextBox ID="PRENUMETextBox" runat="server" Text='<%# Bind("PRENUME") %>' />
             <br />
             FUNCTIE:
             <asp:TextBox ID="FUNCTIETextBox" runat="server" Text='<%# Bind("FUNCTIE") %>' />
+
             <br />
             SALAR_BAZA:
             <asp:TextBox ID="SALAR_BAZATextBox" runat="server" Text='<%# Bind("SALAR_BAZA") %>' />
+
             <br />
             SPOR:
             <asp:TextBox ID="SPORTextBox" runat="server" Text='<%# Bind("SPOR") %>' />
@@ -53,27 +56,61 @@
         <InsertItemTemplate>
             NUME:
             <asp:TextBox ID="NUMETextBox" runat="server" Text='<%# Bind("NUME") %>' />
+            <asp:RequiredFieldValidator ID="NumeRequiredValidator" runat="server"
+                ControlToValidate="NUMETextBox"
+                ErrorMessage="Acest camp este obligatoriu"
+                Display="Dynamic" />
             <br />
             PRENUME:
             <asp:TextBox ID="PRENUMETextBox" runat="server" Text='<%# Bind("PRENUME") %>' />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                ControlToValidate="PRENUMETextBox"
+                ErrorMessage="Acest camp este obligatoriu"
+                Display="Dynamic" />
+
             <br />
             FUNCTIE:
             <asp:TextBox ID="FUNCTIETextBox" runat="server" Text='<%# Bind("FUNCTIE") %>' />
+             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                ControlToValidate="FUNCTIETextBox"
+                ErrorMessage="Acest camp este obligatoriu"
+                Display="Dynamic" />
+
             <br />
             SALAR_BAZA:
             <asp:TextBox ID="SALAR_BAZATextBox" runat="server" Text='<%# Bind("SALAR_BAZA") %>' />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                ControlToValidate="SALAR_BAZATextBox"
+                ErrorMessage="Acest camp este obligatoriu"
+                Display="Dynamic" />
+
             <br />
             SPOR:
             <asp:TextBox ID="SPORTextBox" runat="server" Text='<%# Bind("SPOR") %>' />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                ControlToValidate="SPORTextBox"
+                ErrorMessage="Acest camp este obligatoriu"
+                Display="Dynamic" />
             <br />
             PREMII_BRUTE:
             <asp:TextBox ID="PREMII_BRUTETextBox" runat="server" Text='<%# Bind("PREMII_BRUTE") %>' />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                ControlToValidate="PREMII_BRUTETextBox"
+                ErrorMessage="Acest camp este obligatoriu"
+                Display="Dynamic" />
+            <br />
+            RETINERI:
+            <asp:TextBox ID="RETINERITextBox" runat="server" Text='<%# Bind("RETINERI") %>' />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+                ControlToValidate="RETINERITextBox"
+                ErrorMessage="Acest camp este obligatoriu"
+                Display="Dynamic" />
             <br />
             <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
             &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
         </InsertItemTemplate>
         <ItemTemplate>
-            NUME:
+<%--            NUME:
             <asp:Label ID="NUMELabel" runat="server" Text='<%# Bind("NUME") %>' />
             <br />
             PRENUME:
@@ -92,8 +129,8 @@
             <asp:Label ID="PREMII_BRUTELabel" runat="server" Text='<%# Bind("PREMII_BRUTE") %>' />
             <br />
             <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
-            &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
-            &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
+            &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />--%>
+            &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Adauga angajat" />
         </ItemTemplate>
         <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />

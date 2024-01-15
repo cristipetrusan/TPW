@@ -11,7 +11,10 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (User.Identity.IsAuthenticated == false)
+            {
+                Server.Transfer("Account/Login.aspx");
+            }
         }
     }
 }

@@ -149,7 +149,5 @@ C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebAppl
 C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebApplication1\bin\stdole.dll
 C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebApplication1\bin\log4net.dll
 C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebApplication1\bin\log4net.xml
-C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.AssemblyReference.cache
-C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
-C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebApplication1\bin\CrystalDecisions.Web.dll
+C:\Users\georg\Desktop\faculta\SIAPS\Semestrul 1\TPW\TPW\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache

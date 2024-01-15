@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1
-{
-
-
-    public partial class WebForm3
-    {
-
+namespace WebApplication1 {
+    
+    
+    public partial class WebForm3 {
+        
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
+        
         /// <summary>
         /// TextBoxNume control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxNume;
-
+        
         /// <summary>
         /// Label2 control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-
+        
         /// <summary>
         /// TextBoxPrenume control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxPrenume;
-
+        
         /// <summary>
         /// ButtonCauta control.
         /// </summary>
@@ -58,16 +56,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonCauta;
-
-        /// <summary>
-        /// ButtonSterge control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonSterge;
-
+        
         /// <summary>
         /// Label3 control.
         /// </summary>
@@ -76,7 +65,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-
+        
         /// <summary>
         /// GridView1 control.
         /// </summary>
@@ -85,7 +74,16 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-
+        
+        /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+        
         /// <summary>
         /// SqlDataSource1 control.
         /// </summary>

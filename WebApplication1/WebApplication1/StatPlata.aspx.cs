@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CrystalDecisions.CrystalReports.Engine; // Obligatoriu!
 using Oracle.ManagedDataAccess.Client;
+using CrystalDecisions.Shared;
 
 namespace WebApplication1
 {
@@ -18,7 +19,10 @@ namespace WebApplication1
         String strSQL;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (User.Identity.IsAuthenticated == false)
+            {
+                Server.Transfer("Account/Login.aspx");
+            }
         }
 
         protected void Button1_Click1(object sender, EventArgs e)
@@ -42,6 +46,13 @@ namespace WebApplication1
             raport.Load(cale);
             raport.SetDataSource(ds.Tables["salar"]);
             CrystalReportViewer1.ReportSource = raport;
+
+            DiskFileDestinationOptions fisier = new DiskFileDestinationOptions();
+            raport.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+            raport.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+            fisier.DiskFileName = Server.MapPath("fisier1.pdf");
+            raport.ExportOptions.DestinationOptions = fisier;
+            raport.Export();
         }
     }
 }

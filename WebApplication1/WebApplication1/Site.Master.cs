@@ -15,6 +15,7 @@ namespace WebApplication1
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
+        private static Random random = new Random();
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -69,13 +70,33 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Label1.Text = DateTime.Now.ToString();
+            Image1.ImageUrl = GetRandomImageUrl(0);
+            Image2.ImageUrl = GetRandomImageUrl(1);
 
         }
+        private string GetRandomImageUrl(int i)
+        {
+            // Replace this with an array of your image URLs
+            string[] imageUrls = { "download.jpeg", "download2.jpeg", "download3.jpeg", "download4.jpeg" };
+
+            // Get a random index from the array
+            int randomIndex = random.Next(imageUrls.Length);
+
+            // Return the selected image URL
+            return imageUrls[randomIndex];
+        }
+
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
+
+        //protected void Timer1_Tick(object sender, EventArgs e)
+        //{
+        //    //Label1.Text = DateTime.Now.ToString();
+        //}
     }
 
 }
