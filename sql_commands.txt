@@ -1,14 +1,9 @@
 conn STUDENT/STUDENT
 
+// valori procentuale
 CREATE TABLE val_procentuale (
+  id number(5),
   parola VARCHAR2(255), 
-  impozit_p NUMBER(5,2) NOT NULL,
-  cas_p NUMBER(5,2) NOT NULL,
-  cass_p NUMBER(5,2) NOT NULL
-);
-
-CREATE TABLE val_procentuale (
-  parola INT,
   impozit_p NUMBER(5,2) NOT NULL,
   cas_p NUMBER(5,2) NOT NULL,
   cass_p NUMBER(5,2) NOT NULL
@@ -19,20 +14,20 @@ ADD CONSTRAINT pk_val_procentuale PRIMARY KEY (ID);
 
 
 CREATE TABLE salar (
-    nr_crt INT NOT NULL,
+    nr_crt NUMBER(38) NOT NULL,
     nume VARCHAR2(15) NOT NULL,
     prenume VARCHAR2(20) NOT NULL,
     functie VARCHAR2(20) NOT NULL,
-    salar_baza INT NOT NULL,
-    spor INT NOT NULL,
-    premii_brute INT,
-    total_brut INT,
-    brut_impoz INT,
-    impozit INT,
-    cas INT,
-    cass INT,
-    retineri INT,
-    virat_card INT
+    salar_baza NUMBER(38,3) NOT NULL,
+    spor NUMBER(38,3) NOT NULL,
+    premii_brute NUMBER(38,3),
+    total_brut NUMBER(38,3),
+    brut_impoz NUMBER(38,3),
+    impozit NUMBER(38,3),
+    cas NUMBER(38,3),
+    cass NUMBER(38,3),
+    retineri NUMBER(38,3),
+    virat_card NUMBER(38,3)
 );
 
 
@@ -65,7 +60,7 @@ ALTER TABLE val_procentuale ADD (
     CONSTRAINT id PRIMARY KEY (id)
 );
 
-INSERT INTO val_procentuale (parola, impozit_p, cas_p, cass_p) VALUES ("1234",0.1, 0.25, 0.1);
+INSERT INTO val_procentuale (id, parola, impozit_p, cas_p, cass_p) VALUES (1, '1234', 0.1, 0.25, 0.1);
 
 INSERT INTO salar (
     nr_crt,
@@ -106,10 +101,10 @@ CREATE OR REPLACE TRIGGER calculate_values_trigger
 BEFORE INSERT OR UPDATE ON salar
 FOR EACH ROW
 DECLARE
-  v_total_brut        NUMBER(38);
-  v_cas_percent      NUMBER(38);
-  v_cass_percent     NUMBER(38);
-  v_impozit_percent  NUMBER(38);	
+  v_total_brut        NUMBER(38,2);
+  v_cas_percent      NUMBER(38,2);
+  v_cass_percent     NUMBER(38,2);
+  v_impozit_percent  NUMBER(38,2);	
 BEGIN
   -- Replace null or empty values with 0
   :NEW.PREMII_BRUTE := NVL(NULLIF(TRIM(:NEW.PREMII_BRUTE), ''), 0);
