@@ -94,8 +94,10 @@
 
         <asp:Image ID="Image1" runat="server" />
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Image ID="Image2" runat="server" />
+                &nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                 &nbsp;<div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -106,26 +108,9 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </p>
                 <p>&copy; <%: DateTime.Now.Year %> - Proiect TWP Petrusan George-Cristian&nbsp;&nbsp; &nbsp;&nbsp;
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                </p>
+                    </p>
             </footer>
         </div>
-
-         <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
-            </Triggers>
-            <ContentTemplate>
-                <asp:Label runat="server" ID="Label2"></asp:Label>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-
-
-
-<%--        <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick">--%>
-        </asp:Timer>
-                <asp:Timer ID="Timer1" runat="server" Interval="1000">
-                </asp:Timer>
     </form>
 </body>
 </html>

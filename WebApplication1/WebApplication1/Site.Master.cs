@@ -92,11 +92,6 @@ namespace WebApplication1
         {
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
-
-        //protected void Timer1_Tick(object sender, EventArgs e)
-        //{
-        //    //Label1.Text = DateTime.Now.ToString();
-        //}
     }
 
 }

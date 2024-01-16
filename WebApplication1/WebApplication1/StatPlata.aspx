@@ -3,6 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView ID="GridView1" runat="server">
     </asp:GridView>
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Button" />
+    <asp:Label ID="Label2" runat="server" Text="Nume fisier"></asp:Label>
+&nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Salveaza" />
     <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
 </asp:Content>
